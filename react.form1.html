@@ -1,0 +1,30 @@
+<script crossdomain src="https://unpkg.com/react@16/umd/react.development.js"> </script> 
+<script crossdomain src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"> </script> 
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"> </script>
+
+<body>
+<div id="myid"></div>
+<script type="text/babel">
+class ReadName extends React.Component
+{
+constructor(props)
+{
+super(props);
+this.state={value:"DEV"}
+//this.handleChange=this.handleChange.bind(this);
+//this.handleSubmit=this.handleSubmit.bind(this);
+}
+handleChange=function(event){this.setState({value:event.target.value})}
+handleSubmit=function(event){console.log("the name entered was:" +this.state.value);
+event.preventDefault();}
+render()
+{
+return (<form onSubmit={this.handleSubmit.bind(this)}>
+		<input type="text" onChange={this.handleChange.bind(this)} value={this.state.value}/>
+		<input type="submit" value="SUBMIT"/>
+		</form>)
+}
+}
+ReactDOM.render(<ReadName/>,document.getElementById("myid"));
+</script>
+</body>
